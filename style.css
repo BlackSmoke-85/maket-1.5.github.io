@@ -42,9 +42,9 @@ body {
     background: #F8F8F8;
 }
 .header {
-    width: auto; /* Ширина элемента автоматически подстраивается под его содержимое.*/
+    width: auto; 
     height: 80px;
-    text-transform: uppercase; /* Преобразует текст внутри элемента в верхний регистр.*/
+    text-transform: uppercase; 
     border-top:1px solid rgba(217, 255, 245, 1);
     background: linear-gradient(270deg, #F8F8F8 0%, #FFFFFF 98.61%);
     padding: 16px;   
@@ -53,8 +53,8 @@ body {
     display: flex;
     margin: 0;
     font-size: 16px;
-    line-height: 24px; /* Устанавливает высоту строки в 24 пикселя, что улучшает читаемость текста. */
-    letter-spacing: -0.2px; /* Уменьшает расстояние между буквами на 0.2 пикселя. */   
+    line-height: 24px; 
+    letter-spacing: -0.2px;   
     color: #7E7E82;
 }
 .gradient {
@@ -68,8 +68,8 @@ body {
 }
 .trademark__btn-slide{
     display: flex;
-    justify-content: space-between; /*распределил по всей ширине родителя, разделив свободное пространство поровну */
-    align-items: center;/* выравниваем элементы внутри контейнера по центру*/
+    justify-content: space-between; 
+    align-items: center;
     width: 240px;
     padding: 0;
     height: 72px;
@@ -100,7 +100,7 @@ body {
 }
  .swiper-wrapper{
     display: flex;
-    flex-wrap: nowrap;/* элементы располагаются в контейнере в одну строку*/
+    flex-wrap: nowrap;
     margin-top: 16px;
     margin-left: 16px;
 }

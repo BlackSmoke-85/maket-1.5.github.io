@@ -1,6 +1,7 @@
+let swiper;
 
-
-const swiper = new Swiper('.swiper', {
+function initSwiper(){
+swiper = new Swiper('.swiper', {
   // Optional parameters
     loop: true,
     slidesPerView: "1.3", // количество слайдов которые будут отображаться
@@ -16,28 +17,46 @@ const swiper = new Swiper('.swiper', {
     clickable: true, // включение навигации по нажатию на булиты
   },
 });
+}
+
+ // Функция для уничтожения Swiper
+ function destroySwiper() {
+  if (swiper) {
+      swiper.destroy(true, true);
+      swiper = null;
+  }
+}
+
+// Проверка ширины экрана и инициализация/уничтожение Swiper
+function handleResize() {
+  if (window.innerWidth <= 768) {
+      if (!swiper) {
+          initSwiper();
+      }
+  } else {
+      destroySwiper();
+  }
+};
+
+// Начальная проверка при загрузке страницы
+handleResize();
+
+// Добавляем обработчик события на изменение размера окна
+window.addEventListener('resize', handleResize);
 
 
-let menu = document.querySelector('.menu');/* Этот метод позволяет получить элемент из DOM по указанному селектору.Сохраняет элемент с классом .menu и ниже*/
+let menu = document.querySelector('.swiper');/* Этот метод позволяет получить элемент из DOM по указанному селектору.Сохраняет элемент с классом .menu и ниже*/
 let readmore = document.querySelector('.read-more');
 let readmoreArrow = readmore.querySelector('.read-more__arrow');
 let readmoreText = readmore.querySelector('.read-more__text');
 
-readmore.addEventListener('click', function(){ /*  Добавляет обработчик события на элемент readmore, который будет выполнен при клике на этот элемент..*/
-    if(readmoreText.textContent === 'Показать все'){ /* Проверяет текст внутри элемента readmoreText. Если он равен "Показать все", выполняется следующий блок кода..*/
-        menu.classList.add('openMenu') /* Добавляет класс openMenu к элементу menu, что, скорее всего, изменяет его стили (например, делает его видимым).*/
-        readmoreText.textContent = 'Скрыть' /* Изменяет текст на кнопке на "Скрыть".*/
-        readmoreArrow.style.transform = 'rotate(-180deg)' /* Поворачивает стрелку на -180 градусов, чтобы визуально показать, что меню открыто*/
+readmore.addEventListener('click', function() { 
+  // Используем toggle для управления классами и текстом
+  let isOpen = menu.classList.toggle('openMenu'); // Добавляем / удаляем класс openMenu
 
-    }else{
-        menu.classList.remove('openMenu') /* скрывает его. */
-        readmoreText.textContent = 'Показать все' /* Возвращает текст на кнопке обратно на "Показать все".*/
-        readmoreArrow.style.transform = 'rotate(0deg)' /* Возвращает стрелку в исходное положение (0 градусов), показывая, что меню закрыто.*/
-    }
-    
+  readmoreText.textContent = isOpen ? 'Скрыть' : 'Показать все'; // Меняем текст в зависимости от состояния и используем тернарный оператор
+  readmoreArrow.style.transform = isOpen ? 'rotate(-180deg)' : 'rotate(0deg)'; // Поворачиваем стрелку в зависимости от состояния
 });
-
-
 
 
 

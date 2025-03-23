@@ -22,6 +22,11 @@
 html{
     box-sizing: border-box;
 }
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
 
 *, *::before, *::after{
     box-sizing: inherit;
@@ -42,9 +47,8 @@ body {
     background: #F8F8F8;
 }
 .header {
-    width: auto; 
-    height: 80px;
-    text-transform: uppercase; 
+    width: auto; /* Ширина элемента автоматически подстраивается под его содержимое.*/
+    text-transform: uppercase; /* Преобразует текст внутри элемента в верхний регистр.*/
     border-top:1px solid rgba(217, 255, 245, 1);
     background: linear-gradient(270deg, #F8F8F8 0%, #FFFFFF 98.61%);
     padding: 16px;   
@@ -53,23 +57,33 @@ body {
     display: flex;
     margin: 0;
     font-size: 16px;
-    line-height: 24px; 
-    letter-spacing: -0.2px;   
+    line-height: 24px; /* Устанавливает высоту строки в 24 пикселя, что улучшает читаемость текста. */
+    letter-spacing: -0.2px; /* Уменьшает расстояние между буквами на 0.2 пикселя. */   
     color: #7E7E82;
 }
+.swiper {
+    height: 120px;
+}
 .gradient {
-    position: fixed;
+     position: fixed;
     width: 24px;
-    height: 81px;
-    top: 87px;     
-    left: 296px;
+    height: 89px;
+    top: 75px;     
+    right: 0px;
     background: linear-gradient(270deg, #F8F8F8 16.84%, rgba(248, 248, 248, 0.0001) 100%);
     z-index: 2;
 }
+.swiper-wrapper{
+    display: flex;
+    flex-wrap: nowrap;/* элементы располагаются в контейнере в одну строку*/
+    margin-top: 16px;
+    margin-left: 16px;  
+}
+
 .trademark__btn-slide{
     display: flex;
-    justify-content: space-between; 
-    align-items: center;
+    justify-content: space-between; /*распределил по всей ширине родителя, разделив свободное пространство поровну */
+    align-items: center;/* выравниваем элементы внутри контейнера по центру*/
     width: 240px;
     padding: 0;
     height: 72px;
@@ -83,8 +97,12 @@ body {
 .trademark__forward {
     margin-right: 16px;
 }
-.swiper {
-    height: 120px;
+
+.trademark__forward:hover {
+    background-color: #FFFFFF; 
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0.2; /* Прозрачность 50% */
 }
  .swiper-pagination {
     width: 204px;
@@ -98,31 +116,20 @@ body {
 .swiper-pagination-bullet-active {
     background: #B5B6BC!important;
 }
- .swiper-wrapper{
-    display: flex;
-    flex-wrap: nowrap;
-    margin-top: 16px;
-    margin-left: 16px;
-}
-.main {
+ 
+.read-more {
     display: none;
 }
 
-
 @media (min-width: 768px) {
+
 .swiper {
-    display: none!important;
-}
+    height: 200px;
+}    
 .gradient{
     display: none;
 }
-.header {
-    height: 56px;
-}
-.main {
-    display: block;
-}
-.menu {
+.swiper-wrapper {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
@@ -131,11 +138,18 @@ body {
     gap: 24px;
     margin-top: 24px;
     margin-left: 24px;
-    height: 180px;
-    overflow: hidden;
+    max-height: 200px;
+}
+.swiper-slide {
+    max-width: 224px;
+    max-height: 72px;
 }
 
-.item__btn {
+.swiper-pagination{
+    display: none;
+}
+
+.trademark__btn-slide {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -146,41 +160,54 @@ body {
     left: 24px;
     border-radius: 6px;
     background: #FFFFFF;
-    border: 1px solid #EAEAEA
+    border: 1px solid #EAEAEA;
 }
-.item__img {
+.trademark__img {
     margin-left: 16px;
 }
-.item__forward {
+.trademark__forward {
     margin-right: 16px;
 }
+.trademark__forward:hover {
+    background-color: #FFFFFF; 
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0.2; /* Прозрачность 50% */
+}
 .read-more {
-    
     display: flex;
+    font-family: "TT Lakes1";
     margin-top: 24px;
     margin-left: 24px;
     gap: 9px;
     cursor: pointer;
+    border: none;
+    background-color:#F8F8F8;
 }
 .openMenu {
-    height: 400px;
+    height: 380px;
 }
 }
 
 @media (min-width: 1120px)  {
+.swiper {
+    height: 200px;
+}
 
-.item-hidden{
+.swiper-wrapper{
+    gap: 32px;
+    
+}    
+.swiper-slide {
+    max-width: 240px;
+}
+.trademark {
     display: block;
 }
-.item__btn{
+.trademark__btn-slide{
     min-width: 240px;
 }
-.menu{
-    gap: 32px;
-    height: 200px;
-    overflow: hidden;
-}
 .openMenu {
-    height: 280px;
+    height: 310px;
 }
 }
